@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using TestImplementationCoupling.ExternalCache;
 using TestImplementationCoupling.Services;
 using TestImplementationCoupling.Services.Abstractions;
 
@@ -23,7 +24,9 @@ namespace TestImplementationCoupling.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddTransient<ICountCharactersService, CountCharactersService>();
+            //services.AddTransient<ICountCharactersService, CountCharactersService>(); // NOT ANYMORE :) !!
+            services.AddTransient<ICountCharactersService, CountCharactersServiceNewImplementation>();
+            services.AddTransient<IExternalCache, DummyExternalCache>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
