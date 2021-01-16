@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 using TestImplementationCoupling.Services.Abstractions;
 
 namespace TestImplementationCoupling.Services
